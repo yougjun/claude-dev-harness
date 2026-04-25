@@ -1,11 +1,11 @@
 ---
 name: codebase-analysis
-description: "Comprehensive codebase analysis methodology. Used by the analyst agent to scan any project, detect tech stack, map dependencies, identify risks, and extract requirements. Trigger on: codebase scan, project analysis, dependency mapping, stack detection, risk assessment."
+description: "Codebase analysis methodology for scanning any project, detecting tech stack, mapping dependencies, identifying risks, and extracting requirements. Trigger on: codebase scan, project analysis, dependency mapping, stack detection, risk assessment."
 ---
 
 # Codebase Analysis Methodology
 
-Guide for systematically analyzing any software project.
+Systematically analyze any software project.
 
 ## Step 1: Stack Detection
 
@@ -30,7 +30,7 @@ Build mental model: entry point → routes → business logic → data layer →
 
 ## Step 3: Requirement Extraction
 
-From user request, identify:
+From the user request, identify:
 - What: desired outcome
 - Where: affected files/modules
 - Why: motivation (if stated)
@@ -60,6 +60,6 @@ State clearly:
 - Out of scope: related but untouched areas
 - Assumptions: what is taken as given
 
-## Output Template
+## Output
 
-Write to _workspace/01_analyst_requirements.md with sections: Stack & Structure, Requirements, Affected Files (table), Dependencies & Impact, Risks & Edge Cases, Scope (in/out), Recommended Scale Mode.
+Write to `_workspace/01_analyst_requirements.md` with sections: Stack & Structure, Requirements, Affected Files (table), Dependencies & Impact, Risks & Edge Cases, Scope (in/out), Recommended Scale Mode.

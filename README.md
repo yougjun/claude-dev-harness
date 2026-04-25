@@ -2,6 +2,12 @@
 
 A reusable 7-agent development team for [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Drop-in agents and skills that coordinate analysis, architecture, implementation, testing, code review, security review, and deployment for any tech stack.
 
+## Concepts
+
+Claude Code supports [custom agents](https://docs.anthropic.com/en/docs/claude-code/sub-agents) (`.claude/agents/*.md`) and [skills](https://docs.anthropic.com/en/docs/claude-code/skills) (`.claude/skills/*/SKILL.md`). Agents define specialized roles with their own system prompts and tool access. Skills provide methodology and context that loads on demand.
+
+This harness provides both — agents define _who does what_, skills define _how they do it_.
+
 ## What's Inside
 
 ### Agents (7)
@@ -18,13 +24,13 @@ A reusable 7-agent development team for [Claude Code](https://docs.anthropic.com
 ### Skills (8)
 | Skill | Purpose |
 |-------|---------|
-| **global-orchestrator** | Coordinates the full team with auto-scaling (single/reduced/full) |
+| **global-orchestrator** | Coordinates the full team with auto-scaling |
 | **codebase-analysis** | Methodology for scanning and understanding codebases |
-| **architecture-design** | Design patterns, data flow, API contract methodology |
-| **feature-implementation** | Stack-specific implementation patterns |
-| **testing** | Test writing methodology with framework-specific references |
-| **code-review** | Systematic code quality review process |
-| **security-review** | OWASP-based security audit methodology |
+| **architecture-design** | Design patterns, data flow, API contracts |
+| **feature-implementation** | Stack-specific implementation guidance |
+| **testing** | Test writing with framework-specific references |
+| **code-review** | Systematic code quality review |
+| **security-review** | OWASP-based security audit |
 | **deployment** | Deployment and verification procedures |
 
 ### Stack Coverage
@@ -76,7 +82,7 @@ The orchestrator auto-detects task complexity and selects the right team size:
 | Mode | When | Team |
 |------|------|------|
 | **Single** | 1-file change, typo, config | implementer only |
-| **Reduced** | Bug fix, small feature, <5 files | analyst -> implementer -> tester |
+| **Reduced** | Bug fix, small feature, <5 files | analyst → implementer → tester |
 | **Full** | Major feature, multi-file, architectural | all 7 agents |
 
 ### Workflow (Full Mode)
@@ -102,6 +108,34 @@ _workspace/
   05_deploy_status.md
 ```
 
+## Agent Frontmatter
+
+Each agent `.md` file uses YAML frontmatter. Key fields (from [official docs](https://docs.anthropic.com/en/docs/claude-code/sub-agents)):
+
+| Field | Purpose | Default |
+|-------|---------|---------|
+| `name` | Agent identifier | Required |
+| `description` | When to activate this agent (shown in agent picker) | Required |
+| `model` | Model to use | `inherit` (parent model) |
+| `skills` | Skills always active for this agent | None |
+| `tools` | Allowed tools | All |
+| `disallowedTools` | Tools to exclude | None |
+| `maxTurns` | Max API round-trips | None |
+| `permissionMode` | Permission level | Inherited |
+
+## Skill Frontmatter
+
+Each `SKILL.md` uses YAML frontmatter. Key fields (from [official docs](https://docs.anthropic.com/en/docs/claude-code/skills)):
+
+| Field | Purpose | Default |
+|-------|---------|---------|
+| `name` | Skill identifier | Required |
+| `description` | When to trigger (1,536 char limit in listings) | Required |
+| `user-invocable` | Can be called as `/skill-name` | false |
+| `allowed-tools` | Tools available during skill execution | All |
+| `context` | Files/globs to auto-load as context | None |
+| `agent` | Run skill in a specific agent | None |
+
 ## Customization
 
 ### Adding Stack-Specific Patterns
@@ -110,21 +144,27 @@ Add a reference file to the appropriate skill:
 skills/feature-implementation/references/your-stack-patterns.md
 skills/testing/references/your-stack-test-patterns.md
 ```
-Then update the skill's SKILL.md to include the new reference in the stack detection list.
+Then update the skill's SKILL.md to include the new reference.
 
 ### Creating Domain-Specific Harnesses
-For project-specific agents (e.g., a Flask backend specialist), create agents and skills in your project's `.claude/` directory:
+For project-specific agents, create agents and skills in your project's `.claude/` directory:
 ```
 your-project/.claude/
   agents/flask-backend.md
   skills/flask-backend/SKILL.md
 ```
-See `examples/flask-project/` for a complete example.
+Project-level agents and skills take precedence over global ones. See `examples/flask-project/` for an example.
 
 ## Examples
 
 - `examples/flask-project/` — Flask + SQLite project harness pointer
 - `examples/nextjs-project/` — Next.js + Prisma project harness pointer
+
+## References
+
+- [Claude Code Agents](https://docs.anthropic.com/en/docs/claude-code/sub-agents)
+- [Claude Code Skills](https://docs.anthropic.com/en/docs/claude-code/skills)
+- [Agent Teams](https://docs.anthropic.com/en/docs/claude-code/agent-teams) (experimental)
 
 ## License
 

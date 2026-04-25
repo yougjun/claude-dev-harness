@@ -1,6 +1,6 @@
 ---
 name: security-review
-description: "Security audit methodology based on OWASP Top 10. Used by the security-reviewer agent to identify real vulnerabilities. Covers injection, auth, crypto, data exposure, misconfigurations. Trigger on: security review, vulnerability check, OWASP audit, security assessment."
+description: "Security audit methodology based on OWASP Top 10 for identifying real vulnerabilities. Covers injection, auth, crypto, data exposure, misconfigurations. Trigger on: security review, vulnerability check, OWASP audit, security assessment."
 ---
 
 # Security Review Methodology
@@ -8,8 +8,8 @@ description: "Security audit methodology based on OWASP Top 10. Used by the secu
 ## Prerequisites
 
 1. Determine app exposure: internal vs. public-facing
-2. Read _workspace/03_build_summary.md for changed files
-3. Read actual changed code
+2. Read `_workspace/03_build_summary.md` for changed files
+3. Read the actual changed code
 
 ## Step 1: Threat Model
 
@@ -42,12 +42,12 @@ Who accesses this? What data? Blast radius if compromised? This calibrates sever
 
 ## Step 3: Dependency Check
 
-Check for known CVEs. Python: pip audit. Node: npm audit.
+Check for known CVEs. Python: `pip audit`. Node: `npm audit`.
 
 ## Step 4: Classify
 
 Critical (exploitable now), High (exploitable with effort), Medium (defense-in-depth), Low (hardening).
 
-## Output Template
+## Output
 
-Write to _workspace/04_security_review.md: Threat Model, Findings by severity (File, OWASP Category, Issue, Exploit scenario, Fix), Clean Areas, Dependency Status.
+Write to `_workspace/04_security_review.md`: Threat Model, Findings by severity (File, OWASP Category, Issue, Exploit scenario, Fix), Clean Areas, Dependency Status.

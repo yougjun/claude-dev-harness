@@ -1,17 +1,17 @@
 ---
 name: feature-implementation
-description: "Code implementation methodology for any tech stack. Used by the implementer agent to write production-quality code following project conventions. Covers Python (Flask, FastAPI, Django), JavaScript/TypeScript (React, Next.js, Svelte), and general patterns. Trigger on: code writing, feature building, bug fixing, refactoring, implementation."
+description: "Code implementation methodology for any tech stack. Used by the implementer agent to write production-quality code following project conventions. Covers Python, JavaScript/TypeScript, Go, Rust, Java/Kotlin. Trigger on: code writing, feature building, bug fixing, refactoring, implementation."
 ---
 
 # Feature Implementation Methodology
 
-Guide for writing production-quality code across any stack.
+Write production-quality code across any stack.
 
 ## Prerequisites
 
 1. Read project CLAUDE.md for conventions
-2. Read _workspace/02_architect_design.md if exists (full mode)
-3. Read _workspace/01_analyst_requirements.md if exists (reduced mode)
+2. Read `_workspace/02_architect_design.md` if exists (full mode)
+3. Read `_workspace/01_analyst_requirements.md` if exists (reduced mode)
 
 ## Step 1: Understand Before Writing
 
@@ -23,18 +23,18 @@ Guide for writing production-quality code across any stack.
 
 - Match existing style
 - Minimum viable code — exactly what's needed
-- Security first — validate inputs, parameterize queries, escape outputs
+- Validate inputs, parameterize queries, escape outputs
 - No dead code, no commented-out code, no unused imports
 
 ## Step 3: Stack-Specific Guidance
 
 Load relevant reference based on detected stack:
-- Python → Read references/python-patterns.md
-- React/Next.js/TypeScript → Read references/react-patterns.md
-- Go → Read references/go-patterns.md
-- Rust → Read references/rust-patterns.md
-- Java/Kotlin → Read references/jvm-patterns.md
-- Other → Read references/general-patterns.md
+- Python → references/python-patterns.md
+- React/Next.js/TypeScript → references/react-patterns.md
+- Go → references/go-patterns.md
+- Rust → references/rust-patterns.md
+- Java/Kotlin → references/jvm-patterns.md
+- Other → references/general-patterns.md
 
 ## Step 4: Incremental Build
 
@@ -46,4 +46,4 @@ Load relevant reference based on detected stack:
 
 ## Step 5: Build Summary
 
-Write to _workspace/03_build_summary.md: Files Created, Files Modified, Dependencies Added, Manual Steps Required.
+Write to `_workspace/03_build_summary.md`: Files Created, Files Modified, Dependencies Added, Manual Steps Required.

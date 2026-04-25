@@ -1,0 +1,43 @@
+# CLAUDE.md — [Project Name]
+
+## Overview
+[Brief project description]
+
+## Tech Stack
+| Layer | Technology |
+|-------|-----------|
+| Runtime | [e.g., Python 3.12] |
+| Framework | [e.g., Flask 3.x] |
+| Database | [e.g., PostgreSQL 16] |
+| Frontend | [e.g., React 18 + TypeScript] |
+
+## Server Control
+```bash
+# Replace with your project's commands
+./start.sh
+npm run dev
+```
+
+## Directory Structure
+```
+project/
+├── src/
+├── tests/
+└── ...
+```
+
+## Harness: Development
+
+**Trigger:** Non-trivial development tasks (3+ steps, multi-file changes)
+  -> use `global-orchestrator` skill. Simple questions -> direct answer.
+  Explicit skip -> user says "no harness".
+
+**Scale Modes:**
+- Single: 1-file changes -> implementer only
+- Reduced: Bug fixes, small features -> analyst -> implementer -> tester
+- Full: Major features, new modules -> all 7 agents
+
+**Change History:**
+| Date | Change | Target | Reason |
+|------|--------|--------|--------|
+| YYYY-MM-DD | Initial configuration | All | Harness setup |

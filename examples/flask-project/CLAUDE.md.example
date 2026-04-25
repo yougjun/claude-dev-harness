@@ -1,0 +1,34 @@
+# CLAUDE.md — Flask Project Example
+
+## Overview
+Example Flask application with SQLite backend and Jinja2 templates.
+
+## Tech Stack
+| Layer | Technology |
+|-------|-----------|
+| Runtime | Python 3.10 |
+| Framework | Flask 3.x (Blueprint architecture) |
+| Database | SQLite (WAL mode) |
+| Frontend | Jinja2 + Vanilla JS |
+| WSGI | Gunicorn + gevent |
+
+## Server Control
+```bash
+./master.sh {start|stop|restart|status|logs}
+source ./venv/bin/activate
+```
+
+## Harness: Development
+
+**Trigger:** Non-trivial development tasks (3+ steps, multi-file changes)
+  -> use `global-orchestrator` skill. Simple questions -> direct answer.
+
+**Scale Modes:**
+- Single: 1-file changes -> implementer only
+- Reduced: Bug fixes, small features -> analyst -> implementer -> tester
+- Full: Major features, new modules -> all 7 agents
+
+**Change History:**
+| Date | Change | Target | Reason |
+|------|--------|--------|--------|
+| 2026-04-25 | Initial configuration | All | Harness setup |

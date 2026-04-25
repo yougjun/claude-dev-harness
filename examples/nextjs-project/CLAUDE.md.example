@@ -1,0 +1,35 @@
+# CLAUDE.md — Next.js Project Example
+
+## Overview
+Example Next.js application with Prisma ORM and TypeScript.
+
+## Tech Stack
+| Layer | Technology |
+|-------|-----------|
+| Runtime | Node.js 20 |
+| Framework | Next.js 14 (App Router) |
+| Database | PostgreSQL + Prisma ORM |
+| Frontend | React 18 + TypeScript + Tailwind CSS |
+| Auth | NextAuth.js |
+
+## Server Control
+```bash
+npm run dev          # Development
+npm run build        # Production build
+npm start            # Production server
+```
+
+## Harness: Development
+
+**Trigger:** Non-trivial development tasks (3+ steps, multi-file changes)
+  -> use `global-orchestrator` skill. Simple questions -> direct answer.
+
+**Scale Modes:**
+- Single: 1-file changes -> implementer only
+- Reduced: Bug fixes, small features -> analyst -> implementer -> tester
+- Full: Major features, new modules -> all 7 agents
+
+**Change History:**
+| Date | Change | Target | Reason |
+|------|--------|--------|--------|
+| 2026-04-25 | Initial configuration | All | Harness setup |
